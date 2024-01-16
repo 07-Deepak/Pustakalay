@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comaptible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Pustakalay</title>
+    <link rel="shortcut icon" type="png" href="images/icon/fav.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script>
+        $(window).on('scroll', function(){
+            if($(window).scrollTop()){
+                $('nav').addClass('black');
+            } else {
+                $('nav').removeClass('black');
+            }
+        })
+    </script>
+</head>
+<body>
+
+
+<!-- Navigation Bar -->
+	<header id="header">
+		<nav>
+			<div class="logo"><img src="images/icon/logo3.png" alt="logo"></div>
+			<ul>
+				<li><a href="subjects/courses.html">Courses</a></li>
+				<li><a href="other/service.html">Services</a></li>
+				<li><a href="game/index.html">Fun Zone</a></li>
+				<li><a href="subjects/quiz.html">Quiz Interview</a></li>
+			</ul>
+			<div class="srch">
+				<input type="text" id="myInput" class="search" placeholder="Search here..." oninput="searchYoutuners()">
+				<ul id="myUL">
+					<li><a href="subjects/bscit.html">BSCIT</a></li>
+					<li><a href="subjects/bsccs.html">BCA</a></li>
+					<li><a href="#services_section">Projects</a></li>
+					<li><a href="#">Item 2</a></li>
+					<!-- Add more items as needed -->
+				</ul>
+			</div>
+			<a class="get-started" href="userprofile/register.html">Login</a>
+			<img src="images/icon/menu.png"  class="menu" onclick="sideMenu(0)" alt="menu">
+		</nav>
+		<div class="head-container">
+			<div class="quote">
+				<p>It's your Pustakalay and It's your Book Store You can Upload Your Own Books.</p>
+				<h5>Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. Educational methods include teaching, training, storytelling, discussion and directed research!</h5>
+				<div class="play">
+
+					<a href="https://www.youtube.com/channel/UCAX4DmuhRJe9MAGS2szlAMg"><img src="images/icon/play.png" alt="play"><span><a href="https://www.youtube.com/channel/UCAX4DmuhRJe9MAGS2szlAMg" target="_blank">Watch Now</a></span>
+				</div>
+				<div><span><a href="userprofile/register.html" class="my-button">Login</a></span></div>
+			</div>
+			
+			
+			<div class="svg-image">
+				<img src="images/extra/mainbg.png" alt="svg">
+			</div>
+		</div>
+		<div class="side-menu" id="side-menu">
+			<div class="close" onclick="sideMenu(1)"><img src="images/icon/close.png" alt=""></div>
+			<div class="user">
+				<img src="images/icon/logo3.png" alt="Username">
+				<p>Everything for you!</p>
+			</div>
+			<ul>
+				<li><a href="#about_section">Home</a></li>
+				<li><a href="subjects/courses.html">Courses</a></li>
+				<li><a href="other/service.html">Services</a></li>
+				<li><a href="game/index.html">Fun Zone</a></li>
+				<li><a href="subjects/quiz.html">Quiz Interview</a></li>
+			</ul>
+		</div>
+	</header>
+	<div id="scroll">
+	<!-- Sliding Information -->
+	<marquee style="background: linear-gradient(to right, #FA4B37, #DF2771); margin-top: -10px;" direction="left" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="20"><div class="marqu">“Education is the passport to the future, for tomorrow belongs to those who prepare for it today.” “Your attitude, not your aptitude, will determine your altitude.” “If you think education is expensive, try ignorance.” “The only person who is educated is the one who has learned how to learn …and change.”</div></marquee>
+	</div>
+<!-- Some Popular Subjects -->
+	<div class="title" id="course_section">
+		<span>Popular Subjects on Pustakalay</span>
+	</div>
+	<br><br>
+	<div class="course" >
+		<center><div class="cbox">
+		<div class="det"><a href="subjects/bscit.html"><img src="images/courses/book.png">BSC-IT</a></div>
+		<div class="det"><a href="subjects/bsccs.html"><img src="images/courses/d1.png">BCA</a></div>
+		</div></center>
+		<div class="cbox">
+		<div class="det det-last"><a href="subjects/courses.html"><img src="images/courses/projects.png">--Other--</a></div>
+		</div>
+	</div>
+	<!-- SERVICES -->
+	<div class="service-swipe">
+		<div class="diffSection" id="services_section">
+		<center><p style="font-size: 50px; padding: 100px; padding-bottom: 40px; color: #fff;">Projects</p></center>
+		</div>
+		<div>
+		<a href="userprofile/home.html"><div class="s-card"><img src="images/icon/computer-courses.png"><p>E-Commerce WebSite</p></div></a>
+		<a href="other/reviewsofstudents.html"><div class="s-card"><img src="images/icon/brainbooster.png"><p>Game Application</p></div></a>
+		<a href="other/feedback.html"><div class="s-card"><img src="images/icon/online-tutorials.png"><p>Code Expect Website</p></div></a>
+		<a href="subjects/quiz.html"><div class="s-card"><img src="images/icon/q1.png"><p>IOT Projects</p></div></a>
+	</div>
+	</div>
+<!-- FOOTER -->
+	<footer>
+		<div class="footer-container">
+			<div class="left-col">
+				<img src="images/icon/logo3.png" style="width: 80px;">
+				<div class="logo"></div>
+				<div class="social-media">
+					<a href="https://www.facebook.com/tiwarideepakmalad"><img src="images/icon\fb.png"></a>
+					<a href="https://instagram.com/http.deepak.in?igshid=MzNlNGNkZWQ4Mg=="><img src="images/icon\insta.png"></a>
+					<a href="#"><img src="images/icon\tt.png"></a>
+					<a href="https://www.youtube.com/channel/UCAX4DmuhRJe9MAGS2szlAMg"><img src="images/icon\ytube.png"></a>
+					<a href="https://www.linkedin.com/in/deepak-tiwari-542b56256"><img src="images/icon\linkedin.png"></a>
+				</div><br><br>
+				<p class="rights-text">Our Contact.</p>
+				<br><p><img src="images/icon/location.png"> Bhim nagar, Kurar village<br>Malad east, Mumbai-400097</p><br>
+				<p><img src="images/icon/phone.png"> +91-9987-813-034<br><img src="images/icon/mail.png">&nbsp; pustakalay123@gmail.com</p>
+			</div>
+			<div class="right-col">
+				<form class="newsletter-form">
+					<a href="other/about.html" input class="btn" type="About">About</a>
+			</div>
+		</div>
+	</footer>
+	<script>
+		const searchYoutuners = () => {
+			let filter = document.getElementById('myInput').value.toUpperCase();
+			let ul = document.getElementById('myUL');
+			let li = ul.getElementsByTagName('li');
+			for (var i = 0; i < li.length; i++) {
+				let a = li[i].getElementsByTagName('a')[0];
+				let textValue = a.textContent || a.innerHTML;
+				if (textValue.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = '';
+				} else {
+					li[i].style.display = 'none';
+				}
+			}
+			// Display or hide the list based on search results
+			ul.style.display = filter ? 'block' : 'none';
+		}	
+	</script>
+</body>
+</html>

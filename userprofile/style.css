@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+  
+  * {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5)),url("svg1.jpg");
+	  background-size: cover;
+	  background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+  }
+  /*SCROLLBAR Styling*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #FA4B37;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DF2771; 
+}
+/*NAVIGATION BAR*/
+.nav
+{
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 2%;
+	position: fixed;
+	top: 0px;
+	z-index: 10;
+	box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.nav li, a, button
+{
+	float: left;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	color: #2E3D49;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+}
+
+.nav ul li img {
+	width: 20px;
+	margin-right: 10px;
+	transform: translateY(5px);
+	padding-top: 5px;
+}
+
+.nav ul li 
+{
+	list-style: none;
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.nav ul li a
+{
+	transition: all 0.3s ease 0s;
+}
+
+.nav ul li a:hover
+{
+	color: #FA4B37;
+}
+
+.nav button
+{
+	padding: 9px 25px;
+	background: linear-gradient(to right, #FA4B37, #DF2771);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+	transition: all 0.3s ease 0s;
+}
+
+.nav .switch-tab img {
+	width: 20px;
+}
+.nav .check-box {
+	cursor: pointer;
+	visibility: hidden;
+}
+
+
+/*TITLE*/
+.title {
+	margin-top: 200px;
+	margin-left: 100px;
+}
+.title span{
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 60px;
+	color: #2E3D49;
+}
+.title .shortdesc {
+	padding: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	color: #2E3D49;
+	margin-bottom: 500px;
+}
+
+
+  
+.imageUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center horizontally */
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%; /* Adjust the width as needed */
+}
+  
+  .inp {
+    display: none;
+  }
+  
+  .progressBar {
+    width: 100%;
+    background: #ddd;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  
+  .progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(75deg, #0b41ad, #b30aa5);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .img {
+    max-width: 100%;
+    border: 3px solid crimson;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: none;
+  }
+  
+  .selectImage,
+  .upload {
+    background: crimson;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .filedata {
+    background: cadetblue;
+    padding: 10px 15px;
+    font-size: 14px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+  }
+  
+  .loading {
+    display: none;
+    margin-top: 10px;
+    color: #6c757d;
+  }
+  
+  /* Show loading message when uploading */
+  .uploading .loading {
+    display: block;
+  }
+  
+  /* Hide file data when uploading */
+  .uploading .filedata {
+    display: none;
+  }
+  
+  /* Show image when uploaded */
+  .uploaded .img {
+    display: block;
+  }
+  
+  /* Hide progress bar when not uploading */
+  .not-uploading .progressBar {
+    display: none;
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /*SCROLLING TEXT*/
+.marqu {
+	text-align: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 20px;
+	padding: 10px;
+}
+  #scroll {
+    margin-top: 120px; /* Adjust the margin as needed */
+    width: 100%;
+  }
+  
+/* Media Query for Responsive Design */
+@media screen and (max-width: 768px) {
+  .nav {
+    padding: 15px 2%;
+  }
+
+  .nav ul li {
+    padding: 0px 10px;
+  }
+
+  .nav button {
+    padding: 8px 15px;
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: center;
+  }
+
+  .title span {
+    font-size: 24px;
+  }
+
+  .title .shortdesc {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .imageUpload {
+    width: 90%;
+  }
+
+  .nav li,
+  .nav a,
+  button {
+    font-size: 14px;
+  }
+
+  .nav ul li img {
+    width: 18px;
+    margin-right: 8px;
+    transform: translateY(3px);
+    padding-top: 3px;
+  }
+
+  .progressBar {
+    padding: 5px;
+  }
+
+  .selectImage,
+  .upload {
+    padding: 12px 16px;
+  }
+
+  .filedata {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .marqu {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #scroll {
+    margin-top: 120px;
+  }
+}

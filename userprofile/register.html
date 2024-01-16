@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="register.css">
+  <title>Registration Auth</title>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>Pustakalay</h1>
+  <nav>
+    <ul>
+      <li><a href="../index.html" class="nav-button">Home</a></li>
+      <!-- Add more navigation links as needed -->
+    </ul>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<form id="MainForm" class="w-25 m-4">
+  <h2 class="mb-3">Register User</h2>
+  <div class="form-floating mb-3">
+    <label for="floatingInput">Email address</label>
+    <input type="email" id="emailInp" placeholder="name@example.com">
+    <div id="emailError" class="error"></div>
+  </div>
+  <div class="form-floating mb-3">
+    <label for="floatingPassword">Password</label>
+    <input type="password" id="passwordInp" placeholder="Password">
+    <div id="passwordAlert"></div>
+  </div>
+  <div class="form-floating mb-3">
+    <label for="floatingPassword">First Name</label>
+    <input type="text" id="fnameInp" placeholder="First Name">
+    <div id="fnameError" class="error"></div>
+  </div>
+  <div class="form-floating mb-3">
+    <label for="floatingPassword">Last Name</label>
+    <input type="text" id="lnameInp" placeholder="Last Name">
+    <div id="lnameError" class="error"></div>
+  </div>
+  <label id="pointInp"></label>
+  <button type="submit" class="btn btn-primary">Create New User</button>
+  <p>Already have an account?</p>
+  <a href="login.html"><button type="button" class="btn btn-primary me-2">Sign In</button></a>
+</form>
+<div class="form-floating mb-3">
+  <label id="pointInp"></label>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Pustakalay. All rights reserved.</p>
+</footer>
+
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+          apiKey: "AIzaSyCeBYkpFwsq9_IHDsoRyAZgbNyb78-oTgs",
+          authDomain: "pustakalay-auth.firebaseapp.com",
+          databaseURL: "https://pustakalay-auth-default-rtdb.firebaseio.com",
+          projectId: "pustakalay-auth",
+          storageBucket: "pustakalay-auth.appspot.com",
+          messagingSenderId: "911918208081",
+          appId: "1:911918208081:web:6f24aea08ee2850424d470",
+          measurementId: "G-HQF862LDF3"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+  const auth = getAuth(app);
+
+  let EmailInp = document.getElementById('emailInp');
+  let PassInp = document.getElementById('passwordInp');
+  let FnameInp = document.getElementById('fnameInp');
+  let LnameInp = document.getElementById('lnameInp');
+  let EmailError = document.getElementById('emailError');
+  let PasswordAlert = document.getElementById('passwordAlert');
+  let FnameError = document.getElementById('fnameError');
+  let LnameError = document.getElementById('lnameError');
+  let MainForm = document.getElementById('MainForm');
+
+  let isPasswordValid = () => {
+    let password = PassInp.value;
+    // Password must contain at least one digit, one special symbol, one uppercase letter, and one lowercase letter.
+    let regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return regex.test(password);
+  };
+
+  let updatePasswordAlert = () => {
+    if (isPasswordValid()) {
+      PasswordAlert.textContent = '';
+    } else {
+      PasswordAlert.textContent = 'Password must contain at least one digit, one special symbol, one uppercase letter, and one lowercase letter.';
+    }
+  };
+
+  PassInp.addEventListener('input', updatePasswordAlert);
+
+  let RegisterUser = evt => {
+    evt.preventDefault();
+
+    EmailError.textContent = '';
+    PasswordAlert.textContent = '';
+    FnameError.textContent = '';
+    LnameError.textContent = '';
+
+    // Check if any of the fields are empty
+    if (!EmailInp.value.trim() || !/\S+@\S+\.\S+/.test(EmailInp.value)) {
+      EmailError.textContent = 'Email is required';
+    }
+
+    if (!PassInp.value.trim()) {
+      PasswordAlert.textContent = 'Password is required';
+    } else if (!isPasswordValid()) {
+      PasswordAlert.textContent = 'Password must contain at least one digit, one special symbol, one uppercase letter, and one lowercase letter.';
+    }
+
+    if (!FnameInp.value.trim()) {
+      FnameError.textContent = 'First Name is required';
+    }
+
+    if (!LnameInp.value.trim()) {
+      LnameError.textContent = 'Last Name is required';
+    }
+
+    createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+      .then((credentials) => {
+        // Send email verification
+        sendEmailVerification(credentials.user).then(() => {
+          // Set the default value for the 'point' field to 0
+          set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
+            firstname: FnameInp.value,
+            lastname: LnameInp.value,
+            point: 0  // Set the default value to 0
+          }).then(() => {
+            // After successful registration and database update, show the alert
+            alert('Your ID is created! Please check your email for verification.');
+          });
+        }).catch((error) => {
+          console.error(error.code);
+          console.error(error.message);
+        });
+      })
+      .catch((error) => {
+        alert(error.message);
+        console.error(error.code);
+        console.error(error.message);
+      });
+  };
+
+  MainForm.addEventListener('submit', RegisterUser);
+</script>
+
+</body>
+</html>

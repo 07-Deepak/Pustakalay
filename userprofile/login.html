@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="register.css">
+  <title>Login</title>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>Pustakalay</h1>
+  <nav>
+    <ul>
+      <li><a href="../index.html" class="nav-button">Home</a></li>
+      <!-- Add more navigation links as needed -->
+    </ul>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<form id="MainForm" class="w-25 m-4">
+  <h2 class="mb-3">Sign In User</h2>
+  <div class="form-floating mb-3">
+    <label for="floatingInput">Email address</label>
+    <input type="email" id="emailInp" placeholder="name@example.com">
+    <div id="emailError" class="error"></div>
+  </div>
+  <div class="form-floating mb-3">
+    <label for="floatingPassword">Password</label>
+    <input type="password" id="passwordInp" placeholder="Password">
+    <div id="passwordError" class="error"></div>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+  <p>New Registration</p>
+  <a href="register.html"><button type="button" class="btn btn-primary me-2">Register</button></a>
+</form>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Pustakalay. All rights reserved.</p>
+</footer>
+
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCeBYkpFwsq9_IHDsoRyAZgbNyb78-oTgs",
+          authDomain: "pustakalay-auth.firebaseapp.com",
+          databaseURL: "https://pustakalay-auth-default-rtdb.firebaseio.com",
+          projectId: "pustakalay-auth",
+          storageBucket: "pustakalay-auth.appspot.com",
+          messagingSenderId: "911918208081",
+          appId: "1:911918208081:web:6f24aea08ee2850424d470",
+          measurementId: "G-HQF862LDF3"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+  const auth = getAuth(app);
+  const dbref = ref(db);
+
+  let EmailInp = document.getElementById('emailInp');
+  let PassInp = document.getElementById('passwordInp');
+  let EmailError = document.getElementById('emailError');
+  let PasswordError = document.getElementById('passwordError');
+  let MainForm = document.getElementById('MainForm');
+
+  let SignInUser = evt => {
+    evt.preventDefault();
+
+    // Clear previous error messages
+    EmailError.textContent = '';
+    PasswordError.textContent = '';
+
+    // Check if email is empty or invalid
+    if (!EmailInp.value.trim() || !/\S+@\S+\.\S+/.test(EmailInp.value)) {
+      EmailError.textContent = 'Invalid email address';
+      return;
+    }
+
+    // Check if password is empty
+    if (!PassInp.value.trim()) {
+      PasswordError.textContent = 'Password cannot be empty';
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+      .then((Credentials) => {
+        if (Credentials.user.emailVerified) {
+          get(child(dbref, 'UsersAuthList/' + Credentials.user.uid)).then((snapshot) => {
+            if (snapshot.exists) {
+              sessionStorage.setItem("user-info", JSON.stringify({
+                firstname: snapshot.val().firstname,
+                lastname: snapshot.val().lastname,
+                point: snapshot.val().point
+              }))
+              sessionStorage.setItem("user-creds", JSON.stringify(Credentials.user));
+              window.location.href = 'home.html';
+            }
+          })
+        } else {
+          alert('Please verify your email before logging in.');
+        }
+      })
+      .catch((error) => {
+        // Display error messages
+        if (error.code === 'auth/invalid-email') {
+          EmailError.textContent = 'Invalid email address';
+        } else if (error.code === 'auth/wrong-password') {
+          PasswordError.textContent = 'Incorrect password';
+        } else if (error.code === 'auth/user-not-found') {
+          EmailError.textContent = 'User not found. Please register.';
+        } else {
+          alert(error.message);
+        }
+      })
+  }
+
+  MainForm.addEventListener('submit', SignInUser);
+</script>
+
+</body>
+</html>

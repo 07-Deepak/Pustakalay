@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <title>User Profile</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav" id="nav">
+        <div id="learned-logo">
+        <a href="../index.html"><h1 id="greet"></h1></a></div>
+        <div class="switch-tab" id="switch-tab" onclick="switchTAB()"></div>
+        <ul id="list-switch">
+          <li><a href="../index.html"><img src="../images/courses/d1.png" class="icon">Home</a></li>
+          <button class="btn btn-outline-success" type="button" id="signoutbutton">Sign Out</button>
+          <li><a href="../other/service.html"><h2 id="point"></h2></a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="content-container">
+      <div class="imageUpload">
+        <h2 id="msg"></h2>
+        <input type="file" class="inp" onchange="getImageData(event)" />
+        <button onclick="selectImage()" class="selectImage">Select Images</button>
+        <span class="filedata"></span>
+        <div class="progressBar">
+          <div class="progress"></div>
+        </div>
+        <button onclick="uploadImage()" class="upload">Upload</button>
+        <span class="loading">Loading...</span>
+        <img class="img"/>
+      </div>
+      <div id="scroll">
+        <!-- Sliding Information -->
+        <marquee style="background: linear-gradient(to right, #FA4B37, #DF2771); margin-top: -10px;" direction="left" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10">
+          <div class="marqu">“Education is the passport to the future, for tomorrow belongs to those who prepare for it today.” “Your attitude, not your aptitude, will determine your altitude.” “If you think education is expensive, try ignorance.” “The only person who is educated is the one who has learned how to learn …and change.”</div></marquee>
+      </div>
+    </div>
+      <script src="home.js"></script>
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById('msg');
+        let GreetHead = document.getElementById('greet');
+        let PointHead = document.getElementById('point');
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+        MsgHead.innerText = `user with email "${UserCreds.email}" logged in`;
+        GreetHead.innerText = `welcome ${UserInfo.firstname + " " + UserInfo.lastname + " " + UserInfo.point}!`;
+        PointHead.innerText = `Reward Point : ${UserInfo.point}`;
+
+        let Signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = 'login.html'
+        }
+
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+                window.location.href = 'login.html'
+                else {
+                    MsgHead.innerText = `NOTE : Must upload any file With the end of your name "${UserCreds.email}" logged in`;
+                    GreetHead.innerText = ` ${UserInfo.firstname + " " + UserInfo.lastname}`;
+                    PointHead.innerText = `Reward Point : ${UserInfo.point}`;
+                }
+        }
+
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', Signout);
+    </script>
+  </body>
+</html>

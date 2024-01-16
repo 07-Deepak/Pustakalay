@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Zone</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 0px; /* Reduced padding */
+            text-align: center;
+            z-index: 1000;
+            font-size: 18px; /* Adjust the font size as needed */
+        }
+        
+
+        nav {
+            position: fixed;
+            top: 85px; /* Adjust the top value to match the header height */
+            background-color: #2c3e50;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #1c2833;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 160px 200px 250px; /* Adjust the top padding to leave space for fixed navigation */
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            margin: 10px;
+            width: 100%;
+        }
+
+        .button {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow added here */
+        }
+
+        .button img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .button:hover {
+            background-color: #c0392b;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover */
+        }
+
+        .button span {
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .button-title {
+            margin-top: 5px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 94%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            animation: fadeIn 3s ease-in-out;
+        }
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media only screen and (max-width: 768px) {
+            nav {
+                top: 80px;
+                font-size: 10px;
+            }
+        
+            main {
+                padding: 150px 100px 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Full-screen background -->
+    <div class="bg" style="background-image: url('game.gif');"></div>
+
+    <header>
+        <h1>Fun Zone</h1>
+    </header>
+
+    <nav>
+        <a href="../index.html">Home</a>
+    </nav>
+
+    <main id="game-container">
+        <!-- Your dynamic content goes here -->
+        <div class="button-container">
+            <a href="Word Guessing Game/game.html" class="button">
+                <img src="word.png" alt="Game 1">
+                <span class="button-title">Word Guessing</span>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="js-simple-typing-game-master/js-simple-typing-game-master/index.html" class="button">
+                <img src="speed.jpg" alt="Game 1">
+                <span class="button-title">Typing Speed</span>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="SimpleSnake-main/SimpleSnake-main/index.html" class="button">
+                <img src="icons8-snake-game-96(-xxxhdpi).png" alt="Game 1">
+                <span class="button-title">Snake Game</span>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="space-game-master/space-game-master/final/index.html" class="button">
+                <img src="icons8-space-fighter-96.png" alt="Game 1">
+                <span class="button-title">Space master</span>
+            </a>
+        </div>
+        <div class="button-container">
+            <a href="Touch-the-ball-main/Touch-the-ball-main/index.html" class="button">
+                <img src="icons8-ball-100.png" alt="Game 1">
+                <span class="button-title">Touch the ball</span>
+            </a>
+        </div>
+
+        <!-- Add more button containers as needed -->
+
+    </main>
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Fun Zone. All rights reserved. | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+/*------------------------------------------------------------*/
+/*------------------- Mobile Style --------------------------*/
+@media (max-width: 720px) {
+    #canvas {
+      margin-left: 25%;
+      border-style: solid;
+    }
+  
+    #score {
+      padding-top: 1%;
+      margin-left: 26%;
+      background-color: #4a90e2; /* Royal Blue */
+      border-radius: 20px;
+      width: 40vw;
+      height: 13vh;
+    }
+  
+    body {
+      touch-action: none;
+      height: 100vh;
+      background-color: #f0f0f0; /* Light Gray */
+    }
+  
+    .info_box {
+      font-size: 1.5vh;
+      float: right;
+      width: 30%;
+      height: 15%;
+      text-align: center;
+      margin-right: 10%;
+      background-color: #333; /* Dark Gray */
+      color: #fff; /* White */
+      border-radius: 10px;
+      padding: 5px;
+    }
+  
+    p {
+      float: left;
+      margin-left: 10%;
+      color: #333; /* Dark Gray */
+      font-size: 1.3vh;
+    }
+  }
+  
+  /*------------------------------------------------------------*/
+  /*------------------- Desktop Style --------------------------*/
+  @media (min-width: 720px) {
+    #canvas {
+      margin-left: 20%;
+      border-style: solid;
+    }
+  
+    #score {
+      float: right;
+      padding-top: 1%;
+      background-color: #4a90e2; /* Royal Blue */
+      border-radius: 20px;
+      width: 35vw;
+      height: 20vh;
+    }
+  
+    body {
+      height: 100vh;
+      background-color: #f0f0f0; /* Light Gray */
+    }
+  
+    .info_box {
+      font-size: 3vh;
+      float: right;
+      width: 20%;
+      height: 30%;
+      text-align: center;
+      margin-right: 10%;
+      background-color: #333; /* Dark Gray */
+      color: #fff; /* White */
+      border-radius: 10px;
+      padding: 10px;
+    }
+  
+    p {
+      margin-left: 10%;
+      color: #333; /* Dark Gray */
+      font-size: 3vh;
+    }
+  }
+  

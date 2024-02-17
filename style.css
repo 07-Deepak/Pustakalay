@@ -725,3 +725,61 @@ footer .btn:hover {
 	
 	
 }
+
+@media screen and (max-width: 320px) {
+	.body{
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+
+	}
+	nav ul, .srch, .get-started {
+		display: none;
+	}
+	.menu {
+		display:flex;
+		margin-right: 1%;
+	}
+
+	.logo {
+		margin-right: 20%;
+	}
+	.quote p, .quote h5, .play {
+		justify-content: center;
+		text-align: center;
+	}
+	.quote p {
+		font-size: 30px;
+	}
+	.srch {
+        display: contents;
+        padding: 5px 10px;
+    }
+	
+	.svg-image img {
+		width: 90%;
+		margin: 20px;
+	  }
+	  .svg-image img {
+		  display: none; /* Hide the SVG image on smaller screens */
+	  }
+
+    /* Set the height and width for the search bar */
+    .search {
+        width: 40%; /* Set the width to 100% of the parent container */
+        height: 20px; /* Set the desired height */
+    }
+	.my-button {
+		display: block;
+		margin-left: 45%;
+	}
+	.service-swipe {
+        padding: 20px; /* Add padding for better spacing on small screens */
+    }
+
+    /* Adjust the font size for mobile view */
+    .s-card p {
+        font-size: 14px;
+    }
+}
+

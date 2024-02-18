@@ -12,42 +12,85 @@
             background-color: #f7f7f7;
         }
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .nav
+        {
             width: 100%;
-            background-color: #3498db;
-            color: white;
-            padding: 0px; /* Reduced padding */
-            text-align: center;
-            z-index: 1000;
-            font-size: 18px; /* Adjust the font size as needed */
+            background: transparent;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 2%;
+            position: fixed;
+            top: 0px;
+            z-index: 10;
+            box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
         }
         
-
-        nav {
-            position: fixed;
-            top: 85px; /* Adjust the top value to match the header height */
-            background-color: #2c3e50;
-            padding: 10px;
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        nav a {
+        .nav li, a, button
+        {
+            float: left;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            color: #2E3D49;
+            display: block;
             text-decoration: none;
-            color: white;
-            padding: 10px;
+            text-align: center;
+        }
+        
+        .nav ul li img {
+            width: 20px;
+            margin-right: 10px;
+            transform: translateY(5px);
+            padding-top: 5px;
+        }
+        
+        .nav ul li 
+        {
+            list-style: none;
+            display: inline-block;
+            padding: 0px 40px;
+        }
+        
+        .nav ul li a
+        {
+            transition: all 0.3s ease 0s;
+        }
+        
+        .nav ul li a:hover
+        {
+            color: #FA4B37;
+        }
+        
+        .nav button
+        {
+            padding: 9px 25px;
+            background: linear-gradient(to right, #FA4B37, #DF2771);
+            color: #fff;
+            border: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease 0s;
         }
-
-        nav a:hover {
-            background-color: #1c2833;
+        .nav button:hover
+        {
+            opacity: .9;
         }
+        
+        .nav .switch-tab {
+            cursor: pointer;
+            visibility: hidden;
+        }
+        .nav .switch-tab img {
+            width: 20px;
+        }
+        .nav .check-box {
+            cursor: pointer;
+            visibility: hidden;
+        }
+        
 
         main {
             display: flex;
@@ -157,12 +200,20 @@
     <div class="bg" style="background-image: url('game.gif');"></div>
 
     <header>
-        <h1>Fun Zone</h1>
-    </header>
+		<div class="nav" id="nav">
+			<div id="learned-logo">
+			<a href="../index.html"><img src="../images/icon/logo.png" style="width: 100px;"></a></div>
+			<div class="switch-tab" id="switch-tab" onclick="switchTAB()"><img src="../images/icon/menu.png"></div>
+			<ul id="list-switch">
+				<li><a href="../index.html"><img src="../images/courses/d1.png" class="icon">Home</a></li>
+				<li><a href="computer_courses.html"><img src="../images/courses/computer.png" class="icon">Projects</a></li>
+				<li><a href="../game/index.html"><img src="../images/courses/data.png" class="icon">Fun Zone</a></li>
+				<li><a href="../other/service.html"><img src="../images/courses/algo.png" class="icon">Services</a></li>
+				<li><a href="../subjects/quiz.html"><img src="../images/courses/projects.png" class="icon">Quiz Interview</a></li>
+			</ul>
 
-    <nav>
-        <a href="../index.html">Home</a>
-    </nav>
+		</div>
+	</header>
 
     <main id="game-container">
         <!-- Your dynamic content goes here -->
@@ -173,25 +224,25 @@
             </a>
         </div>
         <div class="button-container">
-            <a href="js-simple-typing-game-master/js-simple-typing-game-master/index.html" class="button">
+            <a href="js-simple-typing-game-master/js-simple-typing-game-master/typing.html" class="button">
                 <img src="speed.jpg" alt="Game 1">
                 <span class="button-title">Typing Speed</span>
             </a>
         </div>
         <div class="button-container">
-            <a href="SimpleSnake-main/SimpleSnake-main/index.html" class="button">
+            <a href="SimpleSnake-main/SimpleSnake-main/snake.html" class="button">
                 <img src="icons8-snake-game-96(-xxxhdpi).png" alt="Game 1">
                 <span class="button-title">Snake Game</span>
             </a>
         </div>
         <div class="button-container">
-            <a href="space-game-master/space-game-master/final/index.html" class="button">
+            <a href="space-game-master/space-game-master/final/space.html" class="button">
                 <img src="icons8-space-fighter-96.png" alt="Game 1">
                 <span class="button-title">Space master</span>
             </a>
         </div>
         <div class="button-container">
-            <a href="Touch-the-ball-main/Touch-the-ball-main/index.html" class="button">
+            <a href="Touch-the-ball-main/Touch-the-ball-main/touch.html" class="button">
                 <img src="icons8-ball-100.png" alt="Game 1">
                 <span class="button-title">Touch the ball</span>
             </a>

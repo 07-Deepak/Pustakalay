@@ -25,7 +25,8 @@ header {
 }
 nav {
 	padding-top: -10px;
-	padding-bottom: -5px;
+	padding-bottom: -10px;
+	margin-bottom: -50rem;
 	top: -5%;
 	position: fixed;
 	display: flex;

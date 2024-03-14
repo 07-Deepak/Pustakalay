@@ -80,6 +80,8 @@
   const db = getDatabase();
   const auth = getAuth(app);
 
+  
+
   let EmailInp = document.getElementById('emailInp');
   let PassInp = document.getElementById('passwordInp');
   let FnameInp = document.getElementById('fnameInp');
@@ -106,6 +108,17 @@
   };
 
   PassInp.addEventListener('input', updatePasswordAlert);
+
+  let resetForm = () => {
+    EmailInp.value = '';
+    PassInp.value = '';
+    FnameInp.value = '';
+    LnameInp.value = '';
+    EmailError.textContent = '';
+    PasswordAlert.textContent = '';
+    FnameError.textContent = '';
+    LnameError.textContent = '';
+  };
 
   let RegisterUser = evt => {
     evt.preventDefault();
@@ -146,6 +159,7 @@
           }).then(() => {
             // After successful registration and database update, show the alert
             alert('Your ID is created! Please check your email for verification.');
+            resetForm();
           });
         }).catch((error) => {
           console.error(error.code);

@@ -39,6 +39,13 @@ const firebaseConfig = {
     };
   
     const uploadImage = () => {
+
+      if (!file) {
+        // If no file is selected, display a message
+        alert("Please select a file before uploading.");
+        return;
+    }
+      
         loading.style.display = "block";
         const storageRef = storage.ref().child("myimages");
         const folderRef = storageRef.child(fileName);

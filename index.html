@@ -43,6 +43,7 @@
 					<!-- Add more items as needed -->
 				</ul>
 			</div>
+			<a class="get-started" href="#" onclick="redirectToProfile()">User Profile</a>
 			<a class="get-started" href="userprofile/register.html">Login</a>
 			<img src="images/icon/menu.png"  class="menu" onclick="sideMenu(0)" alt="menu">
 		</nav>
@@ -132,6 +133,7 @@
 		</div>
 	</footer>
 	<script>
+		let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
 		const searchYoutuners = () => {
 			let filter = document.getElementById('myInput').value.toUpperCase();
 			let ul = document.getElementById('myUL');
@@ -147,7 +149,17 @@
 			}
 			// Display or hide the list based on search results
 			ul.style.display = filter ? 'block' : 'none';
-		}	
+		}
+		let redirectToProfile = () => {
+			if (userCreds) {
+			  // If the user is logged in, redirect to user profile
+			  window.location.href = 'userprofile/home.html';
+			} else {
+			  // If the user is not logged in, display a message to log in first
+			  alert('Please log in first.');
+			  window.location.href = 'userprofile/login.html';
+			}
+		  };
 	</script>
 </body>
 </html>
